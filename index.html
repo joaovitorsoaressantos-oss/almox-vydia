@@ -106,7 +106,7 @@
                             </div>
                             <div>
                                 <label class="block text-[11px] font-medium text-slate-300 mb-1">Item / Descrição</label>
-                                <input type="text" id="mat-descricao" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500 text-sm" value="Cabo CFOA-SM-DDR 02FO LSZH" placeholder="Ex: Cabo óptico">
+                                <input type="text" id="mat-descricao" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cyan-500 text-sm" placeholder="Ex: Cabo óptico CFOA">
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,6 @@
             const btnForm = document.getElementById('btn-tab-form');
             const btnHist = document.getElementById('btn-tab-history');
 
-            // Classes base dos botões
             const btnAtivo = "flex-1 py-3 px-4 bg-cyan-600 text-white font-semibold rounded-xl shadow-md transition duration-200 flex items-center justify-center gap-2";
             const btnInativo = "flex-1 py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl transition duration-200 flex items-center justify-center gap-2";
 
@@ -197,7 +196,7 @@
                 secHist.classList.remove('hidden');
                 btnHist.className = btnAtivo;
                 btnForm.className = btnInativo;
-                carregarTermos(); // Atualiza a lista quando o utilizador abre a aba
+                carregarTermos();
             }
         }
 
@@ -312,15 +311,13 @@
             } else {
                 alert('Termo salvo com sucesso na nuvem!');
                 
-                // Limpar o formulário
+                // Limpar o formulário (mantendo o item/descrição vazio)
                 document.getElementById('termo-form').reset();
                 document.getElementById('data').valueAsDate = new Date();
                 document.getElementById('mat-unidade').value = 'Metros (m)';
-                document.getElementById('mat-descricao').value = 'Cabo CFOA-SM-DDR 02FO LSZH';
                 sigCliente.clear();
                 sigResponsavel.clear();
                 
-                // Mudar para a aba de arquivos automaticamente
                 mudarAba('history');
             }
         }
